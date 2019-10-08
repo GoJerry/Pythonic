@@ -16,7 +16,7 @@ import numpy as np
 class WeiboSpider(object):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36",
-        "Cookie": "UM_distinctid=16da58792b541-019aa5dfc678f3-8383268-1fa400-16da58792b68b4; YF-V5-G0=8a1a69dc6ba21f1cd10b039dff0f4381; _s_tentry=s.weibo.com; Apache=3718227610324.4604.1570440190010; SINAGLOBAL=3718227610324.4604.1570440190010; ULV=1570440190792:1:1:1:3718227610324.4604.1570440190010:; SUBP=0033WrSXqPxfM72-Ws9jqgMF55529P9D9WhR0dWnf_kHAxZVMo4LdRTu; SUB=_2AkMqx4s3f8NxqwJRmP0QzGzjb4h0wg7EieKcm3rsJRMxHRl-yT83qhMytRB6AUel2JKbWcKwW8Jb_8RZYSuRFGlEzox4; CNZZDATA1272960323=805110475-1570436228-https%253A%252F%252Fpassport.weibo.com%252F%7C1570436228; Ugrow-G0=d52660735d1ea4ed313e0beb68c05fc5; YF-Page-G0=5161d669e1ac749e79d0f9c1904bc7bf|1570440196|1570440183",
+        "Cookie": "", # TODO 这里填自己微博登录后的 cookie
     }
 
     def get_comment(self, num):
