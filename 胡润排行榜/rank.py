@@ -138,7 +138,7 @@ class HuRun:
 
     def percent(self):
         """
-        近五年四大富豪财富占比
+        近六年四大富豪财富占比
         :return:
         """
         attr = ["马云家族", "马化腾", '王健林家族', '许家印']
@@ -167,7 +167,7 @@ class HuRun:
 
     def bar(self):
         """
-        近五年首富财富变化
+        近六年首富财富变化
         柱形图
         :return:
         """
@@ -181,7 +181,7 @@ class HuRun:
                 .add_yaxis("王健林", [wealth.to_dict().get(EnumType.WEALTH) for wealth in self.bar_search('王健林家族')],
                            is_selected=False)
                 .add_yaxis("许家印", [wealth.to_dict().get(EnumType.WEALTH) for wealth in self.bar_search('许家印')])
-                .set_global_opts(title_opts=opts.TitleOpts(title="近五年首富", subtitle="胡润排行榜"),
+                .set_global_opts(title_opts=opts.TitleOpts(title="近六年首富", subtitle="胡润排行榜"),
                                  yaxis_opts=opts.AxisOpts(name='财富(亿)'))
                 .render("bar_is_selected.html")
         )
@@ -221,7 +221,7 @@ class HuRun:
                 is_smooth=True
             )
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title="近五年首富财富变化"),
+                title_opts=opts.TitleOpts(title="近六年首富财富变化"),
                 tooltip_opts=opts.TooltipOpts(trigger="axis"),
                 yaxis_opts=opts.AxisOpts(
                     type_="value",
@@ -242,7 +242,7 @@ class HuRun:
 
     def industry_percent(self):
         """
-        近五年排行榜前20行业财富占比
+        近六年排行榜前20行业财富占比
         :return:
         """
         tl = Timeline()
