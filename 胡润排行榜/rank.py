@@ -279,10 +279,10 @@ class HuRun:
 def main():
     h = HuRun()
     h.pie()  # 2020年胡润排行榜前20名
-    h.bar()  # 近五年各首富财富变化
-    h.line()  # 近五年各首富财富变化 折线图
-    h.percent()  # 近五年四大富豪财富占比
-    h.industry_percent()  # 近五年行业财富分布变化
+    h.bar()  # 近六年各首富财富变化
+    h.line()  # 近六年各首富财富变化 折线图
+    h.percent()  # 近六年四大富豪财富占比
+    h.industry_percent()  # 近六年行业财富分布变化
 
 
 if __name__ == '__main__':
