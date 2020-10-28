@@ -14,7 +14,7 @@ ne_zha，运行 spider.py 文件即可，生成对应的 HTML 文件
 [哪吒到底有多火？Python数据分析告诉你！](https://mp.weixin.qq.com/s/4NSkfr0EuI7q_zWZ5GY8zA)
 
 
-3. rocket
+3 火箭微博词云图
 
 [火箭](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU1ODgzMDA1MA==&action=getalbum&album_id=1529807824753590272&scene=173&from_msgid=2247484008&from_itemidx=1&count=3#wechat_redirect)
 
