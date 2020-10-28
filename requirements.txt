@@ -16,3 +16,5 @@ echarts-china-cities-pypkg
 echarts-china-counties-pypkg
 wxpy
 scrapy
+sqlalchemy
+pymysql
