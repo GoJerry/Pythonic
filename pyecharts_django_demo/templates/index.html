@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+<div id="bar" style="width:1600px; height:800px;"></div>
+<script>
+    var chart = echarts.init(document.getElementById('bar'), 'white', {renderer: 'canvas'});
+    var old_data = [];
+    $(
+        function () {
+            fetchData(chart);
+            setInterval(fetchData, 2000);
+        }
+    );
+
+    function fetchData() {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/demo/line",
+            dataType: "json",
+            success: function (result) {
+                var options = result.data;
+                chart.setOption(options);
+                old_data = chart.getOption().series[0].data;
+            }
+        });
+    }
+
+    function getDynamicData() {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/demo/lineUpdate",
+            dataType: 'json',
+            success: function (result) {
+                var options = result.data;
+                old_data.push([options.name, options.value]);
+                chart.setOption({
+                    series: [{
+                        data: old_data
+                    }]
+                });
+            }
+        });
+    }
+
+</script>
+</body>
+</html>
