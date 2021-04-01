@@ -24,6 +24,10 @@ ne_zha，运行 spider.py 文件即可，生成对应的 HTML 文件
 [用Python分析了近几年胡润排行榜，我酸了...](https://mp.weixin.qq.com/s/zL2YMYhCorH-4w7MfXzjpA)
 
 
+5、修改运动步数，支持修改微信，支付宝，QQ
+
+[使用 Python 修改微信/QQ/支付宝运动步数](https://mp.weixin.qq.com/s/qsBTwbaFsKsaiJV65Wgd6Q)
+
 
 
 
