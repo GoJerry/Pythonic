@@ -2,6 +2,7 @@ import requests
 from datetime import datetime
 import random
 import time
+import sys
 
 
 def get_hour():
@@ -31,9 +32,15 @@ def zhi_fu_bao_step(username: str, password: str, step: str):
         "Pragma": "no-cache",
         "Referer": "https://shua.iifxs.xyz/",
     }
-    response = requests.get(url, headers=headers, params=params)
-    text_data = response.text
-    return text_data
+    for _ in range(5):
+        response = requests.get(url, headers=headers, params=params)
+        text_data = response.text
+        if "success" in text_data:
+            return 1
+        else:
+            time.sleep(10)
+            continue
+    return None
 
 
 def main(username: str, password: str, step, a, b):
@@ -54,7 +61,7 @@ def main(username: str, password: str, step, a, b):
         print(f"哦豁！请输入正确数字噢...")
         return None
 
-    if a < b <= 500:
+    if a < b <= 10000:
         while True:
             hour = get_hour()
             if 8 <= hour <= 22:
@@ -66,8 +73,7 @@ def main(username: str, password: str, step, a, b):
                     break
 
                 result = zhi_fu_bao_step(username, password, str(step))
-                print(f"步数刷新结果为: {result}")
-                if "success" in result:
+                if result == 1:
                     print(f"当前时间是{datetime.now()}，总步数为 {step}")
                 time.sleep(300)
 
@@ -75,14 +81,44 @@ def main(username: str, password: str, step, a, b):
                 print(f"当前时间是{datetime.now()}, 停止刷步")
                 break
     else:
-        print(f"每分钟最低增加步数为{a}, 最高步数为{b}, 但是最高不能超过 500 噢!")
+        print(f"您设置的变量为每 5 分钟最低增加步数{a}, 最高步数{b}, 但是最高不能超过 10000 噢!")
         return None
 
 
+def complete_step(username: str, password: str, step: str):
+    if int(step) >= 98800:
+        step = '98800'
+
+    res = zhi_fu_bao_step(username, password, step)
+    if res == 1:
+        return "刷步成功"
+    else:
+        return "失败了，请稍后再试"
+
+
 if __name__ == '__main__':
-    current_step = input("请输入您要刷新的APP平台当前步数：")
-    min_step = input("请输入每5分钟需要增加步数的最小值: ")
-    max_step = input("请输入每5分钟需要增加步数的最大值：")
-    name = input("请输入您的小米运动账号: ")
-    pwd = input("请输入您的小米运动密码：")
-    main(name, pwd, current_step, min_step, max_step)
+
+    choice = input("请输入您版本\n"
+                   "1：为一步到位\n"
+                   "2：每隔 5 分钟刷步\n"
+                   "请选择：")
+
+    if choice == "1":
+        name = input("请输入您的小米运动账号: ")
+        pwd = input("请输入您的小米运动密码：")
+        current_step = input("您想刷到多少步：")
+        resp = complete_step(name, pwd, current_step)
+        print(resp)
+        time.sleep(5)
+
+    elif choice == "2":
+        current_step = input("请输入您要刷新的APP平台当前步数：")
+        min_step = input("请输入每 5 分钟需要增加步数的最小值: ")
+        max_step = input("请输入每 5 分钟的步数上限值，参考值10000：")
+        name = input("请输入您的小米运动账号: ")
+        pwd = input("请输入您的小米运动密码：")
+        main(name, pwd, current_step, min_step, max_step)
+
+    else:
+        print("请输入 1 或者 2")
+        sys.exit(1)
